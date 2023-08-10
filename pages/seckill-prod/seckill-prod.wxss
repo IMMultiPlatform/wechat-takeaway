@@ -1,0 +1,169 @@
+/* pages/seckill-prod/seckill-prod.wxss */
+page {
+  background: #F1F1F1;
+}
+
+.seckill-info {
+  width: 750rpx;
+  height: 794rpx;
+  background: linear-gradient(0deg, #09AFFF, #08C6FF);
+  border-radius: 0 0 15% 15%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bar {
+  display: flex;
+  flex-direction: row;
+  margin-top: 100rpx;
+}
+
+.toback{
+  width: 35rpx;
+  height: 35rpx;
+  margin-left: 25rpx;
+  position: fixed;
+  z-index: 10;
+}
+
+.pic-title {
+  width: 175rpx;
+  height: 35rpx;
+  margin-left: 286rpx;
+}
+
+.seckill-pic {
+  width: 700rpx;
+  height: 270rpx;
+  border-radius: 10rpx;
+  margin-left: 26rpx;
+  margin-top: 40rpx;
+}
+
+.seckill-time {
+  width: 700rpx;
+  margin: 28rpx 26rpx;
+}
+
+.scroll {
+  white-space:nowrap;
+}
+
+
+.time-start{
+  font-size: 33rpx;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 31rpx;
+  display: inline-block;
+}
+
+.time-start:nth-child(2n){
+  margin: 0 70rpx 0 70rpx;
+}
+
+.time-wait{
+  font-size: 33rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 500;
+  color: #BFECFF;
+  line-height: 31rpx;
+  display: inline-block;
+}
+
+.time-wait:nth-child(2n){
+  margin: 0 70rpx 0 70rpx;
+}
+
+.wait{
+  font-size: 21rpx;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #BFECFF;
+  line-height: 31rpx;
+  text-align: center;
+  padding-top: 19rpx;
+}
+
+.start{
+  width: 84rpx;
+  height: 31rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  font-size: 21rpx;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #0994FF;
+  line-height: 31rpx;
+  text-align: center;
+  margin-top: 19rpx;
+  margin-left: 2rpx;
+}
+
+.timedw-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6rpx;
+}
+
+.left-time {
+  font-size: 25rpx;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 31rpx;
+  text-align: center;
+}
+
+.time-down{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.num-hour, .num-minute, .num-second {
+  background: #FFFFFF;
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #09B4FF;
+  text-align: center;
+  margin-left: 17rpx;
+  padding: 6rpx 4rpx;
+}
+
+.mark-colon {
+  width: 4rpx;
+  font-size: 21rpx;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #FFFFFF;
+  padding-left: 8rpx;
+}
+
+.seckill-prod {
+  /* background: #F1F1F1; */
+  width: 750rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 636rpx;
+  position: absolute;
+ 
+}
+
+.prod-card {
+  width: 700rpx;
+  height: 260rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+  margin-top: 21rpx;
+}
+
+.empty {
+  display: none;
+}

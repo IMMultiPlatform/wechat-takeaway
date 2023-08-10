@@ -1,0 +1,21 @@
+<!--components/timeDown/timeDown.wxml-->
+<view class="second-kill">
+  <view class="left">
+    <view class="price-info">
+      <text class="sekKill">￥</text>
+      <view class="sekKill-price">{{sedkillPrice}}</view>
+      <text class="original-price">￥{{originalPrice}}</text>
+    </view>
+    <view class="txt-ql">限时秒杀</view>
+  </view>
+  <view class="right">
+    <view class="txt-info">距本场结束</view>
+    <view class="time-down">
+      <view class="num-hour">{{hour}}</view>
+      <view class="mark-colon">:</view>
+      <view class="num-minute">{{minute}}</view>
+      <view class="mark-colon">:</view>
+      <view class="num-second">{{second}}</view>
+    </view>
+  </view>
+</view>

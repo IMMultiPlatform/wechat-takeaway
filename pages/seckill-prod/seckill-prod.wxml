@@ -1,0 +1,45 @@
+<!--pages/seckill-prod/seckill-prod.wxml-->
+<view class="seckill-info">
+  <view class="bar">
+    <image class="toback" src="../../images/icon/back-white.png" bindtap="toback"></image>
+    <image class="pic-title" src="../../images/icon/qlseck.png"></image>
+  </view>
+  <image class="seckill-pic" src="../../images/icon/seckill.png"></image>
+
+  <!-- 秒杀场次 -->
+  <view class="seckill-time">
+    <scroll-view class="scroll" scroll-x="true">
+      <block wx:for="{{secKillList}}" wx:key="key">
+        <view class="{{index == 0 ? 'time-start' : (clickSts == item ? 'time-start' : 'time-wait')}}"
+          bindtap="getseckillProd" data-time="{{item}}" data-sts="{{index}}">
+          {{item}}
+          <view class="{{index == 0 ? 'start': 'wait'}}">
+            {{index == 0 ? '抢购中' : '即将开始'}}
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <!-- 倒计时 -->
+  <transition show-flag="{{seckillProds.length > 0? true : false}}">
+    <view class="timedw-info">
+      <view class="left-time">距本场结束</view>
+      <view class="time-down">
+        <view class="num-hour">{{hour}}</view>
+        <view class="mark-colon">:</view>
+        <view class="num-minute">{{minute}}</view>
+        <view class="mark-colon">:</view>
+        <view class="num-second">{{second}}</view>
+      </view>
+    </view>
+  </transition>
+</view>
+
+<!-- 秒杀商品列表 -->
+<view class="seckill-prod">
+  <block wx:for="{{seckillProds}}" wx:key="key">
+    <seckill-prod class="{{item.seckillTotalStocks > 0 ? 'prod-card' : 'empty'}}" item="{{item}}"
+      progressValue="{{item.progressValue}}" sts="{{seckillSts}}"></seckill-prod>
+  </block>
+</view>

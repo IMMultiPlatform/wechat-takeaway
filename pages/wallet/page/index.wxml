@@ -1,0 +1,34 @@
+<view class="top-title">
+  <view class="top-record" bindtap="gotoRecord">账单</view>
+</view>
+<view class="wallet-info-c">
+  <view class="wallet-info">
+    <view class="title">账户余额(元)</view>
+    <view class="wallet-detail">{{walletNum}}</view>
+    <view class="btn-c">
+      <view class="btn-left" bindtap="gotoCashOut" wx:if="{{WithdrawCashShowFlag}}">提现</view>
+      <view class="btn-right" bindtap="gotoRecharge">充值</view>
+    </view>
+  </view>
+</view>
+<!-- 银行卡列表 -->
+<!-- <view class="card-c">
+  <view class="card-title">我的银行卡</view>
+  <scroll-view class="scroll-c" scroll-y="true">
+    <view class="card-item {{index === 0 ? '' : 'card-margin-top'}}" wx:for="{{cardList}}" wx:key="index">
+      <view class="card-info">
+        <view class="bank-name">建设银行</view>
+        <view class="card-num">6222 0224 0900 3038 180</view>
+      </view>
+      <view class="release-btn">解除绑定</view>
+    </view>
+    <view class="bottom-shim" wx:if="dataList.length === (index + 1)"></view>
+  </scroll-view>
+</view> -->
+<!-- 底部添加银行卡按钮 -->
+<!-- <view class="add-btn-c">
+  <view class="add-btn">
+    <image src="../../../images/icon/add_icon.png" class="add-icon"></image>
+    <text>添加银行卡</text>
+  </view>
+</view> -->

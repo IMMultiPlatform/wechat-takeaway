@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "coupon": "/components/coupon/coupon",
+    "van-rate": "/vant/rate/index",
+    "timedw":"/components/timeDown/timeDown"
+  },
+  "navigationBarTitleText": "商品详情"
+}

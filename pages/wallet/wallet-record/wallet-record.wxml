@@ -1,0 +1,17 @@
+<view class="container">
+  <block wx:if="{{recordList.length >= 1}}" wx:for="{{recordList}}" wx:key="index">
+    <view class="record-c">
+      <view class="record-left">
+        <view class="title">{{item.note}}</view>
+        <view class="date-c">
+          <view class="date">{{item.createTime}}</view>
+        </view>
+      </view>
+      <view class="record-right">{{item.price}}</view>
+    </view>
+    <view class="interval" wx:if="{{index != recordList.length - 1}}"></view>
+    <view class="bottom-i" wx:if="{{index == recordList.length - 1}}"></view>
+  </block>
+  <view wx:if="{{(listOver && recordList.length > 0)}}" class="list-over">没有更多了~</view>
+  <empty-item showEmpty="{{(recordList && recordList.length === 0)}}"></empty-item>
+</view>

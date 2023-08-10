@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="title">充值金额(元)</view>
+  <view class="cash-c">
+    <view class="symbol">￥</view>
+    <input class="num" placeholder="最低充值100元"
+    value="{{reChargeNum}}"
+    bindinput="inputHandle" focus="{{autoFocus}}"
+    adjust-position maxlength="10" cursor-spacing="100"
+    placeholder-class="empty-num" type="digit" />
+  </view>
+</view>
+<view class="tips">立即到账</view>
+<view class="btn-c">
+  <view class="btn {{inputFlag? '': 'btn-no'}}" bindtap="reChargeHanle">充值</view>
+</view>

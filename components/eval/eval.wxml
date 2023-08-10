@@ -1,0 +1,47 @@
+<!-- 评价弹窗 -->
+<view class="cmt-popup" wx:if="{{commentShow}}">
+  <view class="cmt-tit">
+    <view class="cmt-t">
+      商家评价
+      <text class="cmt-good">好评度{{prodCommData.positiveRating}}%</text>
+    </view>
+    <text class="close" bindtap='closePopup'></text>
+  </view>
+  <view class="cmt-cont">
+    <view class="cmt-tag">
+      <text bindtap='getProdCommPage' data-evaluate="-1"
+        class="{{evaluate==-1?'selected':''}}">全部({{prodCommData.number}})</text>
+      <text bindtap='getProdCommPage' data-evaluate="0"
+        class="{{evaluate==0?'selected':''}}">好评({{prodCommData.praiseNumber}})</text>
+      <text bindtap='getProdCommPage' data-evaluate="1"
+        class="{{evaluate==1?'selected':''}}">中评({{prodCommData.secondaryNumber}})</text>
+      <text bindtap='getProdCommPage' data-evaluate="2"
+        class="{{evaluate==2?'selected':''}}">差评({{prodCommData.negativeNumber}})</text>
+      <text bindtap='getProdCommPage' data-evaluate="3"
+        class="{{evaluate==3?'selected':''}}">有图({{prodCommData.picNumber}})</text>
+    </view>
+    <view class="cmt-items">
+      <view class="cmt-item" wx:for="{{prodCommPage.records}}" wx:key="prodCommId">
+        <view class="cmt-user">
+          <text class="date">{{item.recTime}}</text>
+          <view class="cmt-user-info">
+            <image lazy-load="{{true}}" class="user-img" src="{{item.pic}}"></image>
+            <view class="nickname">{{item.nickName}}</view>
+            <van-rate readonly value="{{ item.score }}" bind:change="onChange" color="#f44" />
+          </view>
+        </view>
+        <view class="cmt-cnt">{{item.content}}</view>
+        <scroll-view class="cmt-attr" scroll-x="true" wx:if="{{item.pics.length}}">
+          <image lazy-load="{{true}}" bindtap="previewHandle" data-url="{{commPic}}" data-urllist="{{item.pics}}"
+          src="{{commPic}}" wx:for='{{item.pics}}' wx:for-item="commPic" wx:key='*this'></image>
+        </scroll-view>
+        <view class="cmt-reply" wx:if="{{item.replyContent}}">
+          <text class='reply-tit'>店铺回复：</text> {{item.replyContent}}
+        </view>
+      </view>
+    </view>
+    <view class="load-more" wx:if='{{prodCommPage.pages > prodCommPage.current}}'>
+      <text bindtap='getMoreCommPage'>点击加载更多</text>
+    </view>
+  </view>
+</view>

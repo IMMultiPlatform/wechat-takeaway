@@ -1,0 +1,12 @@
+<!--pages/cash-out/cash-out.wxml-->
+<view class="container">
+  <view class="txt-show">提现金额</view>
+  <view class="enter-amount">
+    <view class="rmb-mark">￥</view>
+    <input placeholder="今日最多还可提现{{leftDrawlMoney}}元" class="input-money" type="digit" bindinput="inputMoney" value="{{cashOutMoney}}"></input>
+  </view>
+  <view class="border-line"></view>
+  <view class="txt-info">钱包余额 {{walletMoney}} 元，每日最多可提现5次，每日最多可提现2000元</view>
+  <view wx:if="{{inputStatus==false}}" class="btn-info">提现</view>
+  <view wx:if="{{inputStatus==true}}" class="btn-cfm" bindtap="cashOutConfirm">提现</view>
+</view>

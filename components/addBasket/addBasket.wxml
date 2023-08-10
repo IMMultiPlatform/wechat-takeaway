@@ -1,0 +1,6 @@
+<!--components/addBasket/addBasket.wxml-->
+<view class="container" style="width:{{width}}rpx; height:{{height}}rpx;" catchtap="addBasket">
+  <view class="basket-c animated {{clickFlag? 'fadeAdd' : ''}}">
+    <image src="../../images/tabbar/basket-sel.png"></image>
+  </view>
+</view>

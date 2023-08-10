@@ -1,0 +1,3 @@
+<view wx:if="{{showFlagComputed}}" class="basket-dlg-bg animated {{animatedFlag ? 'fadeIn' : 'fadeOut'}}">
+  <slot></slot>
+</view>

@@ -1,0 +1,63 @@
+<view class="container" wx:if="{{showPay}}" catchtouchmove="preventBindtouchmove">
+  <!-- 蒙层 -->
+  <view class="mask-c animated {{animatPay ? 'fadeIn' : 'fadeOut'}}"></view>
+  <!-- 支付首界面 -->
+  <view class="pay-c animated {{animatPay ? 'fadeInUp' : 'fadeInDown'}}">
+    <view class="title-c">
+      <view class="title">付款详情</view>
+      <view class="close" bindtap="closePayDlg"></view>
+    </view>
+    <!-- 付款详情 -->
+    <view class="payInfo-c">
+      <view class="num-c">
+        <view class="tag">￥</view>
+        <view class="num">{{wxs.parsePrice(actualTotal)[0]}}.{{wxs.parsePrice(actualTotal)[1]}}</view>
+      </view>
+    </view>
+    <!-- 付款方式 -->
+    <view class="method-c" bindtap="chooseMorePay">
+      <view class="method-title">付款方式</view>
+      <view class="method-interval"></view>
+      <view class="method-text">
+      {{payTypeText}}
+      <text class="wallet-info" wx:if="{{showWalletFlag}}">(可用余额￥{{walletNum}})</text>
+      </view>
+      <view class="method-arrow">
+        <image class="method-arrow-img"  src='../../images/icon/more.png'></image>
+      </view>
+    </view>
+    <!-- 支付密码框 -->
+    <!-- <view class="password-c" bindtap="pwdFocusHandle" wx:if="{{needPasswd}}">
+      <input class="input-control" bindinput="inputPasswd" maxlength='6'
+     password type='number' focus='{{pwdFocus}}' adjust-position cursor-spacing="120"/>
+      <view
+        class="password-item {{index > 0 ? 'password-item-margin' : ''}} {{passwordData.length - 1 === index? 'focus': ''}}"
+        wx:for="{{6}}" wx:key="index">
+        <view wx:if="{{passwordData.length > index}}">{{passwordData[index]}}</view>
+      </view>
+    </view> -->
+    <view class="pay-btn" bindtap="payHandle">支付</view>
+  </view>
+
+
+  <!-- 支付方式选择页面 -->
+  <view class="choose-c animated {{animatMenu ? 'fadeRight' : 'fadeLeft'}}" wx:if="{{showMenu}}">
+    <!-- 标题 -->
+    <view class="choose-title-c">
+      <view class="back-arrow" bindtap="closeMenu">
+        <image class="back-arrow-img" src='../../images/icon/more.png'></image>
+      </view>
+      <view class="title">选择付款方式</view>
+    </view>
+    <!-- 支付方式 -->
+    <view class="choose-item" wx:for="{{payMethodList}}" wx:key="index" data-id="{{item.id}}"
+      bindtap="chooseMethodHandle" wx:if="{{item.isOnline == 1}}">
+      <image class="item-icon" src="{{item.icon}}"></image>
+      <view class="item-text">{{item.name}}</view>
+      <view style="flex:1;"></view>
+      <image class="pay-choosed" src='../../images/icon/pay_choosed.png'
+        wx:if="{{item.isChoosed}}"></image>
+    </view>
+  </view>
+</view>
+<wxs module="wxs" src="../../wxs/number.wxs"/>

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "empty-item": "/components/emptyItem/emptyItem"
+  },
+  "backgroundTextStyle": "light",
+  "navigationBarTitleText": "我的充值记录",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#fafafa"
+}

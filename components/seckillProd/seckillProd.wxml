@@ -1,0 +1,23 @@
+<!--components/seckillProd/seckillProd.wxml-->
+<view class="seckl-prod">
+  <view class="prod-pic">
+    <image class="seckillpic" src='{{item.pic}}'></image>
+  </view>
+  <view class="prod-info">
+    <text class="prod-name">{{item.prodName}}</text>
+    <text class="prod-introduction">限量{{item.seckillOriginStocks}}件，已抢{{item.seckillOriginStocks - item.seckillTotalStocks}}件</text>
+    <view class="progress-box" >
+      <progress border-radius="13rpx" class="progress-p" percent="{{progressValue}}" activeColor="#FF1A47" backgroundColor="#FFD6D9" stroke-width="25rpx" />
+      <view class="txt">{{progressValue}}%</view>
+    </view>
+    <view class="prod-sckilprice">
+      <text class="sekKill">￥</text>
+      <view class="sekKill-price">{{item.seckillPrice}}</view>
+      <text class="original-price">￥{{item.price}}</text>
+      <view class="rush-buy">
+        <view wx:if="{{sts == true}}" class="btn-buy"  bindtap="goBuy" data-prodid="{{item.prodId}}">马上抢</view>
+        <view wx:if="{{sts == false}}" class="btn-wait">马上开始</view>
+      </view>
+    </view>
+  </view>
+</view>

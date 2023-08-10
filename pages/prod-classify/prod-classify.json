@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "prod": "/components/production/production",
+    "empty-item": "/components/emptyItem/emptyItem"
+  },
+  "onReachBottomDistance": 0
+}

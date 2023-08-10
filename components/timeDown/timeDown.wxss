@@ -1,0 +1,102 @@
+/* components/timeDown/timeDown.wxss */
+.second-kill {
+  width: 750rpx;
+  height: 113rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.left {
+  width: 565rpx;
+  height: 113rpx;
+  background: linear-gradient(129deg, #FF3B60, #FF317F);
+  display: flex;
+  flex-direction: column;
+}
+
+.price-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10rpx
+}
+
+.sekKill {
+  font-size: 27rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin-left: 26.04rpx;
+}
+
+.sekKill-price{
+  font-size: 46rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin-left: 7.29rpx;
+}
+
+.original-price {
+  font-size: 27rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  text-decoration: line-through;
+  color: #FFFFFF;
+  margin-left: 15.63rpx;
+}
+
+.txt-ql {
+  font-size: 31rpx;
+  font-family: 郑庆科黄油体Regular;
+  font-weight: normal;
+  color: #FFFFFF;
+  padding-left: 26.04rpx;
+}
+
+.right {
+  width: 185rpx;
+  height: 113rpx;
+  background: #FAEAE9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.txt-info{
+  font-size: 25rpx;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #FF3143;
+  line-height: 31rpx;
+}
+
+.time-down{
+  width: 135rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 14.27rpx;
+}
+
+.mark-colon {
+  width: 4rpx;
+  height: 35rpx;
+  font-size: 21rpx;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #FF3143;
+}
+
+.num-hour, .num-minute, .num-second {
+  width: 31rpx;
+  height: 35rpx;
+  background: #FF3143;
+  border-radius: 3rpx;
+  font-size: 23rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-align: center;
+}

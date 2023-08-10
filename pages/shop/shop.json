@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "eval": "/components/eval/eval",
+    "spec-dlg": "/components/specDlg/specDlg",
+    "empty-item": "/components/emptyItem/emptyItem",
+    "transition": "/components/transition/transition"
+  },
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#F3F3F3",
+  "navigationStyle": "custom"
+}

@@ -1,0 +1,87 @@
+page {
+  background: #f7f7f7;
+}
+view {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 750rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.record-c {
+  width: 700rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 30rpx 24rpx;
+}
+.interval {
+  width: 700rpx;
+  height: 2rpx;
+  background: #E9E9E9;
+}
+
+.record-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.title {
+  font-size: 27rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #313131;
+}
+
+.date-c {
+  margin-top: 28rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.date {
+  font-size: 23rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #616161;
+}
+
+.time {
+  margin-left: 16rpx;
+}
+
+.record-right {
+  font-size: 33rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #313131;
+}
+
+.bottom-i {
+  width: 100%;
+  padding-bottom: 40rpx;
+}
+
+.list-over {
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 31rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #7B7B7B;
+  padding-bottom: 50rpx;
+}

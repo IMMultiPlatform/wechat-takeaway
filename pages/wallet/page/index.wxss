@@ -1,0 +1,201 @@
+/* pages/wallet/page/index.wxss */
+page{
+  box-sizing: border-box;
+  background-color: #F1F1F1;
+  overflow: hidden;
+}
+
+.top-title {
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 0 26rpx 26rpx 26rpx;
+}
+
+.top-record {
+  font-size: 29rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #262626;
+}
+
+.wallet-info-c {
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.wallet-info {
+  width: 700rpx;
+  height: 375rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.title {
+  margin-top: 62.5rpx;
+  font-size: 25rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #262626;
+}
+.wallet-detail {
+  margin-top: 40rpx;
+  font-size: 56rpx;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #262626;
+}
+.btn-c {
+  display: flex;
+  flex-direction: row;
+  margin-top: 70rpx;
+}
+.btn-left {
+  width: 250rpx;
+  height: 73rpx;
+  background: #EEFAFF;
+  border-radius: 10rpx;
+  font-size: 29rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #09AFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 62rpx;
+}
+.btn-right {
+  width: 250rpx;
+  height: 73rpx;
+  background: #09AFFF;
+  border-radius: 10rpx;
+  font-size: 29rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-c {
+  width: 750rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-title {
+  width: 700rpx;
+  display: flex;
+  flex-direction: row;
+  margin: 45rpx;
+  font-size: 31rpx;
+  font-weight: bold;
+  color: #262626;
+}
+
+.scroll-c {
+  width: 700rpx;
+  height: 57vh;
+}
+
+.card-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #08D2C9;
+  border-radius: 10rpx;
+  opacity: 0.5;
+  width: 700rpx;
+  height: 157rpx;
+}
+
+.card-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 49rpx;
+}
+
+.card-margin-top {
+  margin-top: 21rpx;
+}
+
+.bottom-shim {
+  width: 700rpx;
+  height: 160rpx;
+}
+
+.bank-name {
+  font-size: 29rpx;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #FFFFFF;
+}
+
+.card-num{
+  font-size: 29rpx;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #FFFFFF;
+  margin-top: 22rpx;
+}
+
+.release-btn{
+  width: 135rpx;
+  height: 52rpx;
+  background: #07858B;
+  opacity: 0.5;
+  border-radius: 10rpx;
+  margin-right: 31rpx;
+  font-size: 25rpx;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.add-btn-c{
+  width: 750rpx;
+  height: 153rpx;
+  position: fixed;
+  z-index: 2;
+  background-color: #F1F1F1;
+  bottom: 0rpx;
+  left: 0rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+.add-btn{
+  width: 700rpx;
+  height: 104rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  background: #FFFFFF;
+  font-size: 29rpx;
+  font-weight: 400;
+  color: #09AFFF;
+  border-radius: 10rpx;
+}
+.add-icon{
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 20rpx;
+}

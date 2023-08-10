@@ -1,0 +1,147 @@
+/* components/seckillProd/seckillProd.wxss */
+.seckl-prod {
+  width: 700rpx;
+  height: 260rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.seckl-prod::first-letter {
+  top: 500rpx;
+  position: absolute;
+}
+
+.seckillpic{
+  width: 219rpx;
+  height: 215rpx;
+  border-radius: 10rpx;
+  margin: 21rpx 21rpx;
+  position: relative;
+}
+
+.prod-info {
+  display: flex;
+  flex-direction: column;
+  width: 436rpx;
+}
+
+.prod-name {
+  width: 435rpx;
+  font-size: 31rpx;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #000000;
+  padding-top: 22rpx;
+  text-overflow: ellipsis;
+}
+
+.prod-introduction {
+  width: 435rpx;
+  font-size: 25rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #B8B8B8;
+  padding-top: 8rpx;
+  text-overflow: ellipsis;
+}
+
+.progress-box {
+  margin-top: 17rpx;
+}
+
+.progress-p {
+  width: 156rpx;
+  height: 25rpx;
+  border-radius: 13rpx;
+  background: #FFD6D9;
+  position: absolute;
+}
+
+.wx-progress-inner-bar {
+  border-radius: 13rpx;
+}
+
+.txt{
+  padding-left: 10rpx;
+  font-size: 19rpx;
+  text-align: center;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #ffffff;
+  position: absolute;
+  z-index: 2;
+}
+
+.prod-sckilprice {
+  display: flex;
+  flex-direction: row;
+  margin-top: 46rpx;
+}
+
+.sekKill {
+  font-size: 25rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FF1A47;
+  margin-top: 38rpx
+}
+
+.sekKill-price{
+  font-size: 38rpx;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: #FF1A47;
+  margin-top: 27rpx;
+  margin-left: 8rpx;
+}
+
+.original-price {
+  font-size: 23rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  text-decoration: line-through;
+  color: #B8B8B8;
+  margin-left: 11rpx;
+  padding-top: 39rpx;
+}
+
+.rush-buy {
+  margin-top: 10rpx;
+}
+
+.btn-buy {
+  width: 150rpx;
+  height: 58rpx;
+  background: #FF1A47;
+  border-radius: 29rpx;
+  font-size: 27rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  left: 548rpx;
+  position: absolute;
+}
+
+.btn-wait {
+  width: 150rpx;
+  height: 58rpx;
+  background: #a0a0a0;
+  border-radius: 29rpx;
+  font-size: 27rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #ebebeb;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  left: 548rpx;
+  position: absolute;
+}

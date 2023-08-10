@@ -1,0 +1,1 @@
+<view wx:if="{{showEmpty}}" class="empty-item">这里的空空哒~</view>

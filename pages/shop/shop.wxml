@@ -1,0 +1,325 @@
+<scroll-view id="pageScroll" style="height: 100vh;" enhanced="{{true}}" scroll-y bindscroll="containerScroll"
+  show-scrollbar="{{false}}" bounces="{{false}}" scroll-anchoring="{{true}}">
+  <!-- 顶部的bar -->
+  <view id="topBar" class="fixed-c">
+    <view class="fixed-c-position">
+      <view class="top-bar-redo" style="opacity: {{topBarOpacity}};"></view>
+      <view class="top-bar-top">
+        <!-- 返回按钮 -->
+        <block wx:if="{{needNaviback}}">
+          <view wx:if="{{searchWidth < 150}}" class="navi-back" bindtap="navibackHandle">
+            <image src="../../images/icon/naviback-w.png"></image>
+          </view>
+          <view wx:else class="navi-back">
+            <image src="../../images/icon/naviback-b.png"></image>
+          </view>
+        </block>
+        <!-- 搜索按钮 -->
+        <view wx:if="{{showSearchFlag}}" class="top-bar-search" style="width: {{searchWidth}}px;" bindtap="gotoSeach">
+          <image src="../../images/icon/search.png" />
+          <text>找点什么呢</text>
+        </view>
+        <view wx:else class="search-top" bindtap="gotoSeach">
+          <image src="../../images/icon/search2.png" />
+        </view>
+        <!-- 收藏按钮 -->
+        <view class="search-top" bindtap="likeShopHandle">
+          <image wx:if="{{isLikedShop}}" src="../../images/icon/liked.png"></image>
+          <image wx:else  src="../../images/icon/like.png"/>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 顶部背景图 -->
+  <view class="title-c">
+    <image mode="scaleToFill" class="bg-c" src="{{shopInfo.headPic}}"/>
+  </view>
+  <!-- 店铺信息 -->
+  <view class="card-c">
+    <!-- 店铺卡片 -->
+    <view class="shop-info-c">
+      <!-- 店铺头像 -->
+      <view class="shop-logo" bindtap="openHidden">
+        <image
+          src="{{shopInfo.shopLogo}}">
+        </image>
+      </view>
+      <!-- 店铺信息 -->
+      <view class="shop-info-title">{{shopInfo.shopName}}</view>
+      <!-- 配送信息和起送价 -->
+      <view class="shop-send-info">
+        配送约{{shopInfo.deliveryTime}}分钟
+        <view class="shop-send-fee">￥{{shopInfo.minimumOrderAmount}}起送</view>
+      </view>
+      <!-- 滚动公告 -->
+      <view class="shop-slogan">公告：{{shopInfo.intro}}</view>
+      <!-- 满减信息 -->
+      <view class="shop-discount-c" wx:if="{{discountList.length > 0}}">
+        <view wx:for="{{discountList}}" class="shop-discount-item" wx:key="index">{{item}}</view>
+      </view>
+      <!-- 店铺展开信息 -->
+    </view>
+    <!-- tab切换 -->
+    <view class="tab-c">
+      <!-- 垫子 -->
+      <view class="tab-shim" id="tabShim"></view>
+      <!-- 真正的tab切 -->
+      <view class="tab-real-c {{topBarFixed ? 'tab-real-c-fixed': ''}}" id="tabBar">
+        <view class="tab-real-p">
+          <view id="prodTab" class="tab-text {{choosedTab == 'prod'? 'tab-choosed':''}}" bindtap="tabHandle"
+            data-tap="prod" data-index="0">菜品</view>
+          <view id="evalTab" class="tab-text {{choosedTab == 'eval'? 'tab-choosed':''}}" bindtap="tabHandle"
+            data-tap="eval" data-index="1">评价<text wx:if="{{evalCount > 0}}">({{wxs.formatEvalNum(evalCount)}})</text></view>
+          <view id="shopTab" class="tab-text {{choosedTab == 'shop'? 'tab-choosed':''}}" bindtap="tabHandle"
+            data-tap="shop" data-index="2">商家</view>
+          <view class="tab-line-c" style="left: {{tabLineLeft}}px;">
+            <view class="tab-line"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- swiper -->
+  <swiper class="swiper" bindchange="swiperChange" current="{{swiperIndex}}">
+    <swiper-item>
+      <!-- 菜品业务 -->
+      <view class="shop-container">
+        <!-- swiper商店轮播图 -->
+        <swiper wx:if="{{indexImgs.length > 0}}" autoplay="{{autoplay}}" indicator-color="{{indicatorColor}}"
+          interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{indicatorActiveColor}} "
+          circular='true' class='pic-swiper' indicator-dots previous-margin='20rpx' next-margin='10rpx'>
+          <block wx:for='{{indexImgs}}' wx:key='index'>
+            <swiper-item class="banner-item">
+              <view class='img-box'>
+                <image lazy-load src='{{item.imgUrl}}' data-prodid='{{item.relation}}' bindtap='toProdPage'
+                  mode="widthFix" class='banner'></image>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class="shop-classify-c"
+          style="height: {{indexImgs.length > 0 ? 'calc(100vh - 528rpx)' : 'calc(100vh - 246rpx)'}};">
+          <!--左边 分类菜单 -->
+          <view class="shop-left-scroll-c">
+            <scroll-view id="leftScroll" class="shop-left-scroll" scroll-y="{{scrollControl}}" scroll-top="{{menuScrollTop}}"
+            scroll-with-animation enhanced="{{true}}" show-scrollbar="{{true}}" bounces="{{true}}">
+              <!-- 左边列表渲染 -->
+              <view class="shop-left-item {{index == leftTabIndex ? 'shop-left-item-sel' : ''}}" wx:for="{{shopCategoryList}}"
+                bindtap="clickLeftTabHandle" data-index="{{index}}" data-categoryindex="{{index}}"
+                data-categoryId="{{item.categoryId}}" data-categoryName="{{item.categoryName}}" wx:key="index">
+                <text>{{item.categoryName}}</text>
+                <!-- 数量小红点 -->
+                <view wx:if="{{basketChooseArr[item.categoryId].count}}" class="num-do">
+                  {{basketChooseArr[item.categoryId].count}}</view>
+              </view>
+              <view class="shop-left-item-act" style="top: {{leftTabSelTop}}px;"></view>
+              <!-- 列表垫子 -->
+              <view class="list-shim"></view>
+            </scroll-view>
+          </view>
+          
+          <!--右边 分类菜单 -->
+          <scroll-view class="shop-right-scroll" scroll-y="{{scrollControl}}">
+            <!-- 标题 -->
+            <view class="right-title">
+              <text>{{categoryName}}</text>
+            </view>
+            <!-- 分类数据 -->
+            <view class="right-prod-c" wx:key="index" wx:for="{{categoryProdList}}">
+              <!-- 商品图 -->
+              <view class="prod-image-c" data-prodId="{{item.prodId}}" bindtap="gotoPordHandle">
+                <image class="prod-image-m" lazy-load="{{true}}" src="{{item.pic}}"></image>
+              </view>
+              <!-- 商品信息 -->
+              <view class="prod-info">
+                <view class="prod-title">
+                  <text>{{item.prodName}}</text>
+                </view>
+                <view class="prod-sub-title">
+                  <text>{{item.brief}}</text>
+                </view>
+                <view class="prod-sub-title">
+                  <text></text>
+                </view>
+                <!-- 价格 -->
+                <view class="price-c">
+                  <view class="price-symble">￥</view>
+                  <view class="price-num">{{item.price}}</view>
+                </view>
+                <!-- 按钮区域 -->
+                <view class="right-prod-btn-c">
+                  <!-- 加减按钮 -->
+                  <view wx:if="{{item.skuList.length == 1}}" class="m-numSelector">
+                    <view hidden="{{!basketChooseArr[choosedCategoryId].prod[item.prodId].sku[item.skuList[0].skuId]}}" catchtap='onCountMinus'
+                      class="minus" data-index="{{index}}" data-skuId="{{item.skuList[0].skuId}}"></view>
+                    <input hidden="{{!basketChooseArr[choosedCategoryId].prod[item.prodId].sku[item.skuList[0].skuId]}}" type='number'
+                      value='{{basketChooseArr[choosedCategoryId].prod[item.prodId].sku[item.skuList[0].skuId].prodCount}}' disabled></input>
+                    <view catchtap='onCountPlus' class="plus" data-index="{{index}}" data-skuId="{{item.skuList[0].skuId}}"></view>
+                  </view>
+                  <!-- 选规格按钮 -->
+                  <view wx:elif="{{item.skuList.length > 1}}" class="spec-btn" catchtap="openSkuDlg" data-index="{{index}}">
+                    选规格
+                    <view wx:if="{{basketChooseArr[choosedCategoryId].prod[item.prodId].prodSkuCount}}" class="spec-num-do">
+                      {{basketChooseArr[choosedCategoryId].prod[item.prodId].prodSkuCount}}</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!-- 数据为空时展示 -->
+            <empty-item show-empty="{{categoryProdList.length === 0}}"></empty-item>
+            <!-- 列表垫子 -->
+            <view class="list-shim"></view>
+          </scroll-view>
+        </view>
+        <!--  -->
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view id="prodScroll" class="scroll-c" scroll-y="{{scrollControl}}" enhanced="{{true}}"
+        show-scrollbar="{{false}}" bounces="{{false}}" scroll-anchoring="{{true}}">
+        <!-- 评价业务 -->
+        <eval bind:getEvalCount="getEvalCount" comment-show="{{true}}"></eval>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view id="prodScroll" class="scroll-c" scroll-y="{{scrollControl}}" enhanced="{{true}}"
+        show-scrollbar="{{false}}" bounces="{{false}}" scroll-anchoring="{{true}}">
+        <!-- 商家业务 -->
+        <view class="shop-detail-addr-c">
+          <view class="shop-detail-addr-t">地址</view>
+          <view class="shop-detail-addr">{{shopInfo.shopAddress}}</view>
+          <view class="shop-detail-addr-tag">
+            <image src="../../images/icon/addr.png"></image>
+          </view>
+        </view>
+        <view class="shop-detail-addr-c">
+          <view class="shop-detail-addr-t">商家电话</view>
+          <view class="shop-detail-addr">{{shopInfo.tel}}</view>
+          <view class="shop-detail-addr-tag">
+            <image src="../../images/icon/link_phone.png"></image>
+          </view>
+        </view>
+        <view class="shop-photos-c">
+          <view class="shop-photos-t">商家相册</view>
+          <scroll-view scroll-x enable-flex enhanced="{{true}}" show-scrollbar="{{false}}" 
+          bounces="{{false}}" scroll-anchoring="{{true}}"  class="shop-photos-list">
+            <view class="shop-photo" wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8]}}" wx:key="index">
+              <image src="{{shopInfo.shopLogo}}"></image>
+            </view>
+          </scroll-view>
+        </view>
+        <view class="shop-detail-addr-c">
+          <view class="shop-detail-addr-t">配送服务</view>
+          <view class="shop-detail-addr">商家自送</view>
+          <view class="shop-detail-addr-tag"></view>
+        </view>
+        <view class="shop-detail-addr-c">
+          <view class="shop-detail-addr-t">营业时间</view>
+          <view class="shop-detail-addr">{{shopInfo.startTime}}-{{shopInfo.endTime}}</view>
+          <view class="shop-detail-addr-tag"></view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+  <!-- 滚动区域 -->
+</scroll-view>
+<!-- 底部按钮 -->
+<view class="basket-btn-fixed" hidden="{{!(choosedTab == 'prod')}}">
+  <!-- 满减提示 -->
+  <transition show-flag="{{baskeTips? true : false}}">
+    <view class="basket-tips" >{{baskeTips}}</view>
+  </transition>
+  <view class="basket-btn-c">
+    <!-- 联系商家 -->
+    <view class="shop-phone-c" bindtap="callShopHandle">
+      <image src="../../images/icon/shop-phone.png"></image>
+      <text>联系商家</text>
+    </view>
+    <!-- 购物车 -->
+    <view class="shop-basket-c" bindtap="showBasketDlgHandle">
+      <image class="shop-basket-img"
+      src="../../images/icon/shop-cart.png"></image>
+      <view class="shop-basket-c-int" id="btn-basket"></view>
+      <view wx:if="{{wxs.computBasketNum(shopCartItemDiscounts) > 0}}" class="shop-basket-c-num">
+        {{wxs.computBasketNum(shopCartItemDiscounts)}}</view>
+    </view>
+    <!-- 价格模块 -->
+    <view class="shop-basket-info">
+      <!-- 总价信息 -->
+      <view class="basket-price-c">
+        <view class="basket-price-tag">￥</view>
+        <view class="basket-price-num">
+          {{wxs.parsePrice(finalMoney)[0]}}.{{wxs.parsePrice(finalMoney)[1]}}
+        </view>
+      </view>
+      <!-- 配送费 -->
+      <view class="basket-fee">配送费{{shopInfo.deliveryFee}}元</view>
+    </view>
+    <!-- 结算按钮 -->
+    <view wx:if="{{minimumOrderAmount > finalMoney}}" class="confim-gray">差
+    {{wxs.parsePrice(minimumOrderAmount - finalMoney)[0]}}.{{wxs.parsePrice(minimumOrderAmount - finalMoney)[1]}}元起送</view>
+    <view wx:else class="confim-c" bindtap="toFirmOrder">结算</view>
+  </view>
+</view>
+
+<!-- 规格弹窗 -->
+<!-- 购物车弹窗 -->
+<view class="basket-dlg-fixed" hidden="{{!basketDlgShow}}" catchtouchmove="preventTouchMove">
+  <view class="basket-dlg-bg animated {{basketDlgAnimat ? 'fadeIn' : 'fadeOut'}}" catchtap="closeBasketDlg"></view>
+  <!-- 购物车布局 -->
+  <view class="basket-dlg-c animated {{basketDlgAnimat ? 'fadeInUp' : 'fadeInDown'}}">
+    <!-- 购物车标题 -->
+    <view class="basket-title-c">
+      <view class="basket-title-left">已选商品</view>
+      <view class="basket-title-right">
+        <view class="basket-clear-icon">
+          <image src="../../images/icon/clear-his.png"></image>
+        </view>
+        <view class="basket-clear" bindtap="clearBasketHandle">清空购物车</view>
+      </view>
+    </view>
+    <!-- 商品列表 -->
+    <scroll-view class="basket-dlg-scroll" scroll-y>
+      <block wx:for="{{shopCartItemDiscounts}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+        <block wx:for="{{item.shopCartItems}}" wx:for-index="cindex" wx:for-item="citem" wx:key="index">
+          <view class="basket-prod-item-c">
+            <view class="basket-prod-img">
+              <image src="{{citem.pic}}"></image>
+            </view>
+            <view class="basket-prod-info">
+              <view class="basket-prod-name">{{citem.prodName}}</view>
+              <view class="basket-prod-sub">{{citem.skuName}}</view>
+              <view class="basket-prod-price">
+                <view class="basket-prod-tag">￥</view>
+                {{citem.price}}
+              </view>
+            </view>
+            <!-- 加减按钮 -->
+            <view class="basket-prod-btn">
+              <view class="m-numSelector">
+                <view bindtap='basketCountMinus' class="minus" data-index="{{index}}" data-shopId="{{citem.shopId}}"
+                  data-cindex="{{cindex}}" data-prodid="{{citem.prodId}}" data-skuId="{{citem.skuId}}"
+                  data-basketId="{{citem.basketId}}" data-categoryid="{{citem.categoryId}}"></view>
+                <input type='number' value='{{citem.prodCount}}' disabled></input>
+                <view bindtap='basketCountPlus' class="plus" data-index="{{index}}" data-shopId="{{citem.shopId}}"
+                  data-prodid="{{citem.prodId}}" data-cindex="{{cindex}}" data-skuId="{{citem.skuId}}"
+                  data-basketId="{{citem.basketId}}" data-categoryid="{{citem.categoryId}}"></view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+    </scroll-view>
+    <!-- 底部的按钮垫子 -->
+    <view class="basket-dlg-shim"></view>
+  </view>
+</view>
+<spec-dlg sku-show="{{skuShow}}" price="{{choosePrice}}" basket-choose-arr="{{basketChooseArr}}"
+  choosed-category-id="{{choosedCategoryId}}" sku-list="{{choosedSkuList}}" prod-id="{{prodId}}"
+  bind:specCountMinus= "specCountMinus"
+  category-index="{{categoryIndex}}" shop-id="{{shopId}}" bind:specCountPlus="specCountPlus" ></spec-dlg>
+<wxs module="wxs" src="../../wxs/number.wxs" />
+
+<view hidden="{{!(choosedTab == 'prod')}}" class="animateRedDo" style="left:{{animateElmLeft}}px; top:{{animateElmTop}}px;"></view>
+<canvas  class="canvas-fixed" id="animate" style="display: {{canvasShow? 'block' : 'none'}};"  type="2d"></canvas>

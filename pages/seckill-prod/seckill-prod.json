@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "seckill-prod": "../../components/seckillProd/seckillProd",
+    "transition": "../../components/transition/transition"
+  },
+  "navigationBarTitleText":"限时秒杀",
+  "navigationBarBackgroundColor":"#09AFFF",
+  "navigationBarTextStyle":"white",
+  "navigationStyle":"custom"
+}

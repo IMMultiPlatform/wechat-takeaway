@@ -1,0 +1,92 @@
+/* pages/re-charge/re-charge.wxss */
+page {
+  background: #f7f7f7;
+}
+
+view {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  padding: 31rpx 24rpx 24rpx 50rpx;
+  background-color: #ffffff;
+}
+
+.title {
+  font-size: 29rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #313131;
+}
+
+.cash-c {
+  margin-top: 52rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.symbol {
+  font-size: 42rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #313131;
+}
+
+.num {
+  width: 400rpx;
+  height: 65rpx;
+  margin-left: 10rpx;
+  font-size: 63rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #262626;
+}
+
+.empty-num {
+  font-size: 29rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #BCBCBC;
+}
+
+.tips {
+  margin-top: 21rpx;
+  padding: 32rpx 24rpx 21rpx 24rpx;
+  font-size: 29rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #313131;
+  background-color: #ffffff;
+}
+
+.btn-c {
+  margin-top: 42rpx;
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 667rpx;
+  height: 92rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 33rpx;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FFFFFF;
+  background: #07C160;
+  border-radius: 10rpx; 
+}
+
+.btn-no {
+  color: #7B7B7B;
+  background: #F1F1F1;
+}

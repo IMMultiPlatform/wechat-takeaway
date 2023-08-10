@@ -1,0 +1,55 @@
+var picUrl = "https://www.gzqcl.net/pic"
+var formatPicUrl = function(URL) {
+  var tmp = URL.replace('http://pic.chuan319.top', picUrl)
+  return tmp
+}
+
+var getOrderStatus = function(status, riderName) {
+  // 订单状态 1:待抢单 2:待取件 3:确认取件 4:待配送 5:已配送 6:待评价 7:已评价 8:已完成
+  if (!status) {
+    return ''
+  }
+  switch(status) {
+    case 1:
+      return "待支付";
+    case 2:
+      if (!riderName) {
+        return "商家已确认，等待骑手抢单"
+      }
+      return "骑手已接单，取件中";
+    case 3:
+      return "骑手已取件，配送中";
+    case 4:
+      return "骑手配送中";
+    case 5:
+      return "已完成";
+    case 6:
+    return "已取消";
+    case 8:
+      return "已完成";
+      default: 
+      return "待处理";
+  }
+}
+
+var payTypeText = function (payType) {
+  if (!payType) {
+    return ""
+  }
+  switch(payType) {
+    case 1:
+      return "微信付款";
+    case 2:
+      return "支付宝付款";
+    case 3:
+      return "余额付款";
+      default: 
+      return "";
+  }
+}
+
+module.exports = {
+  formatPicUrl: formatPicUrl,
+  getOrderStatus: getOrderStatus,
+  payTypeText: payTypeText
+}

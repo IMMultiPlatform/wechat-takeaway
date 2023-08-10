@@ -1,0 +1,230 @@
+/** 评价弹窗 */
+.cmt-popup {
+  background-color: #fff;
+}
+
+.cmt-popup .cmt-cont {
+  height: calc(100% - 80rpx);
+  overflow: auto;
+}
+
+.cmt-popup .cmt-cnt {
+  -webkit-line-clamp: 20;
+  max-height: 500px;
+}
+
+.cmt-reply {
+  font-size: 14px;
+  border-top: 1px dashed #ddd;
+  padding: 5px 0;
+}
+
+.cmt-reply .reply-tit {
+  color: #eb2444;
+}
+
+.cmt-popup .load-more {
+  font-size: 14px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.cmt-popup .load-more text {
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: #666;
+}
+
+/** 评价*/
+
+.cmt-wrap {
+  background: #fff;
+  margin-top: 20rpx;
+  position: relative;
+  line-height: 48rpx;
+}
+
+.cmt-tit {
+  font-size: 32rpx;
+  position: relative;
+  border-bottom: 1px solid #ddd;
+  padding: 20rpx;
+}
+
+.cmt-t {
+  width: 300rpx;
+}
+
+.cmt-good {
+  color: #eb2444;
+  font-size: 24rpx;
+}
+
+.cmt-count {
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.cmt-more {
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 2rpx solid #999;
+  border-right: 2rpx solid #999;
+  transform: rotate(45deg);
+  margin-left: 10rpx;
+  display: inline-block;
+}
+
+.cmt-cont {
+  padding: 0 20rpx;
+}
+
+.cmt-tag {
+  position: relative;
+  padding: 14px 3px 0 0;
+  margin: 0;
+}
+
+.cmt-tag text {
+  margin: 0 10px 10px 0;
+  background: #fdf0f0;
+  display: inline-block;
+  padding: 0 10px;
+  height: 25px;
+  border-radius: 3px;
+  line-height: 25px;
+  font-size: 12px;
+  font-family: -apple-system, Helvetica, sans-serif;
+  color: #666;
+}
+
+.cmt-tag text.selected {
+  color: #fff;
+  background: #e93b3d;
+}
+
+.cmt-item {
+  position: relative;
+  padding: 10px 0;
+}
+
+.cmt-item::after {
+  content: "";
+  height: 0;
+  display: block;
+  border-bottom: 1px solid #ddd;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  right: -10px;
+  border-bottom-color: #e5e5e5;
+}
+
+.cmt-user {
+  line-height: 25px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.cmt-user-info {
+  display: flex;
+  align-items: center;
+  width: 500rpx;
+}
+
+.cmt-user .user-img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.cmt-user .nickname {
+  margin-left: 10px;
+  color: #333;
+  max-width: 10em;
+  font-size: 24rpx;
+  line-height: 39rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.cmt-user .stars {
+  display: flex;
+  margin-left: 3px;
+}
+
+.cmt-user .stars image {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.cmt-user .date {
+  float: right;
+  color: #999;
+  margin-left: -60px;
+}
+
+.cmt-cnt {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  position: relative;
+  line-height: 1.5;
+  font-size: 14px;
+  margin: 5px 0;
+  word-break: break-all;
+  max-height: 126px;
+}
+
+.cmt-attr {
+  height: 85px;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.cmt-attr .img-wrap {
+  width: 85px;
+  height: 85px;
+  display: inline-block;
+}
+
+.cmt-attr image {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 2px;
+  background: #f3f3f3;
+}
+
+.cmt-more-v {
+  text-align: center;
+  background-color: #fff;
+  font-size: 12px;
+}
+
+.cmt-more-v text {
+  height: 25px;
+  line-height: 25px;
+  font-size: 12px;
+  text-align: center;
+  color: #333;
+  padding: 0px 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  display: inline-block;
+}
